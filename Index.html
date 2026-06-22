@@ -440,6 +440,7 @@
             border-radius: 0.5rem;
             padding: 1.5rem;
             text-align: center;
+            margin-bottom: 1rem;
         }
 
         .success-message.show {
@@ -631,7 +632,7 @@
                         <p>Nous vous contacterons sous peu.</p>
                     </div>
 
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formspree.io/f/mbdvjzzj" method="POST">
                         <div class="error-message" id="errorMessage"></div>
 
                         <div class="form-group">
@@ -703,5 +704,12 @@
     <script>
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementBy
+
+        form.addEventListener('submit', function(e) {
+            // Formspree va gérer l'envoi automatiquement
+            submitBtn.textContent = 'Envoi en cours...';
+            submitBtn.disabled = true;
+        });
+    </script>
+</body>
+</html>
