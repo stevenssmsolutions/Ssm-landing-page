@@ -609,8 +609,10 @@
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Ebox</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Cogeco</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Comwave</span></div>
-                        </div>
+                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Starlink (à venir)</span></div>
                     </div>
+
+                    <div style="height: 2rem;"></div>
 
                     <div class="service-group">
                         <h4>Services Complémentaires</h4>
@@ -735,19 +737,19 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Meilleur moment pour appeler *</label>
-                            <div class="radio-group">
-                                <div class="radio-option">
-                                    <input type="radio" id="matin" name="disponibilite" value="Matin" checked>
-                                    <label for="matin" class="radio-label">Matin</label>
+                            <label>Moments disponibles pour appeler *</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="matin" name="disponibilite" value="Matin">
+                                    <label for="matin">Matin</label>
                                 </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="apres-midi" name="disponibilite" value="Après-midi">
-                                    <label for="apres-midi" class="radio-label">Après-midi</label>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="apres-midi" name="disponibilite" value="Après-midi">
+                                    <label for="apres-midi">Après-midi</label>
                                 </div>
-                                <div class="radio-option">
-                                    <input type="radio" id="soir" name="disponibilite" value="Soirée">
-                                    <label for="soir" class="radio-label">Soirée</label>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="soir" name="disponibilite" value="Soirée">
+                                    <label for="soir">Soirée</label>
                                 </div>
                             </div>
                         </div>
@@ -755,7 +757,7 @@
                         <button type="submit" class="submit-btn" id="submitBtn">Demander un appel</button>
 
                         <div class="form-footer">
-                            Nous respectons votre confidentialité. Réponse garantie en moins de 24h.
+                            Nous respectons votre confidentialité. Réponse garantie en 24h ouvrables.
                         </div>
                     </form>
                 </div>
