@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSM Solutions - Internet & Téléphonie</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTo1oB1bABvkV5H1qX2Qza4ghtWGwBI3Q&libraries=places"></script>
     <style>
         * {
             margin: 0;
@@ -42,17 +43,16 @@
         }
 
         .logo {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #001a66 0%, #1a5ccc 50%, #ff9900 100%);
-            border-radius: 0.5rem;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo svg {
+            width: 100%;
+            height: 100%;
         }
 
         .company-info h1 {
@@ -168,22 +168,6 @@
             color: #cbd5e1;
             font-weight: 500;
             font-size: 0.875rem;
-        }
-
-        .service-group:nth-child(2) h4 {
-            color: #fb923c;
-        }
-
-        .service-list:nth-of-type(2) .service-item {
-            border-color: rgba(251, 146, 60, 0.2);
-        }
-
-        .service-list:nth-of-type(2) .service-item:hover {
-            border-color: rgba(251, 146, 60, 0.5);
-        }
-
-        .service-list:nth-of-type(2) .service-icon {
-            color: #fb923c;
         }
 
         .why-us {
@@ -312,6 +296,8 @@
             border-radius: 1rem;
             padding: 2rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+            max-height: 85vh;
+            overflow-y: auto;
         }
 
         .form-container h3 {
@@ -323,12 +309,12 @@
 
         .form-container > p {
             color: #cbd5e1;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-size: 0.95rem;
         }
 
         .form-group {
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .form-group label {
@@ -336,18 +322,18 @@
             font-size: 0.875rem;
             font-weight: 500;
             color: #cbd5e1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
 
         .form-group input,
         .form-group select {
             width: 100%;
-            padding: 0.75rem;
+            padding: 0.65rem;
             background-color: rgba(71, 85, 105, 0.3);
             border: 1px solid rgba(59, 130, 246, 0.3);
             border-radius: 0.5rem;
             color: white;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s;
         }
 
@@ -362,10 +348,44 @@
             box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
         }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #ff9900;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
         .radio-group {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 0.5rem;
+            margin-top: 0.5rem;
         }
 
         .radio-option {
@@ -378,7 +398,7 @@
 
         .radio-label {
             display: block;
-            padding: 0.75rem;
+            padding: 0.65rem;
             background-color: rgba(71, 85, 105, 0.3);
             border: 2px solid #475569;
             border-radius: 0.5rem;
@@ -387,6 +407,7 @@
             color: #cbd5e1;
             cursor: pointer;
             transition: all 0.3s;
+            font-size: 0.85rem;
         }
 
         .radio-option input[type="radio"]:checked + .radio-label {
@@ -401,7 +422,7 @@
 
         .submit-btn {
             width: 100%;
-            padding: 1rem;
+            padding: 0.9rem;
             background: linear-gradient(to right, #3b82f6, #2563eb);
             color: white;
             font-weight: bold;
@@ -409,7 +430,8 @@
             border-radius: 0.5rem;
             cursor: pointer;
             transition: all 0.3s;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            margin-top: 1rem;
         }
 
         .submit-btn:hover {
@@ -427,10 +449,10 @@
         }
 
         .form-footer {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #94a3b8;
             text-align: center;
-            margin-top: 1rem;
+            margin-top: 0.75rem;
         }
 
         .success-message {
@@ -455,21 +477,6 @@
 
         .success-message p {
             color: #86efac;
-        }
-
-        .error-message {
-            background-color: rgba(239, 68, 68, 0.2);
-            border: 1px solid rgba(239, 68, 68, 0.5);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            color: #fca5a5;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        .error-message.show {
-            display: block;
         }
 
         footer {
@@ -531,6 +538,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+
             .footer-content {
                 grid-template-columns: 1fr;
             }
@@ -548,6 +559,10 @@
             .header-right {
                 text-align: center;
             }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -555,7 +570,23 @@
     <header>
         <div class="header-content">
             <div class="logo-section">
-                <div class="logo">S</div>
+                <div class="logo">
+                    <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <!-- S 3D shape -->
+                        <g>
+                            <!-- Top part - left (dark blue) -->
+                            <polygon points="30,25 55,15 70,35 45,45" fill="#001a66"/>
+                            <!-- Top part - right (bright blue) -->
+                            <polygon points="55,15 85,30 70,55 45,45" fill="#1a5ccc"/>
+                            <!-- Middle orange accent -->
+                            <polygon points="50,45 60,48 65,38 55,35" fill="#ff9900"/>
+                            <!-- Bottom part - left (dark blue) -->
+                            <polygon points="30,65 55,75 45,95 20,85" fill="#001a66"/>
+                            <!-- Bottom part - right (bright blue) -->
+                            <polygon points="55,75 85,85 70,105 45,95" fill="#1a5ccc"/>
+                        </g>
+                    </svg>
+                </div>
                 <div class="company-info">
                     <h1>SSM Solutions</h1>
                     <p>Résoudre. Connecter. Économiser.</p>
@@ -581,15 +612,15 @@
                     <h3>Nos Services & Fournisseurs</h3>
 
                     <div class="service-group">
-                        <h4>Fournisseurs Principaux</h4>
+                        <h4>Fournisseurs Partenaires</h4>
                         <div class="service-list">
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Rogers</span></div>
-                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Telus</span></div>
-                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Bell</span></div>
-                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Koodo</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Fido</span></div>
-                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Cogeco</span></div>
+                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Telus</span></div>
+                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Koodo</span></div>
+                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Bell</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Ebox</span></div>
+                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Cogeco</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Comwave</span></div>
                         </div>
                     </div>
@@ -600,7 +631,7 @@
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Téléphonie Résidentielle</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Internet Portable 5G</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Alarme & Prévention</span></div>
-                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Système de Paiement</span></div>
+                            <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Solutions de Paiement</span></div>
                         </div>
                     </div>
                 </div>
@@ -615,9 +646,9 @@
                 <div class="solutions">
                     <h3>Nos Solutions Pour</h3>
                     <div class="solutions-grid">
-                        <div class="solution-card"><h4>Résidentiel</h4><p>Internet & Cellulaire</p></div>
-                        <div class="solution-card"><h4>Affaires</h4><p>PME & Professionnels</p></div>
-                        <div class="solution-card"><h4>Corporate</h4><p>Grandes Entreprises</p></div>
+                        <div class="solution-card"><h4>Résidentiel</h4><p>Solutions pour les particuliers</p></div>
+                        <div class="solution-card"><h4>Affaires</h4><p>Solutions pour les PME & Professionnels</p></div>
+                        <div class="solution-card"><h4>Corporate</h4><p>Solutions pour les grandes entreprises</p></div>
                     </div>
                 </div>
             </div>
@@ -625,7 +656,7 @@
             <div class="right-column">
                 <div class="form-container">
                     <h3>Prêt à économiser ?</h3>
-                    <p>Remplissez le formulaire et nous vous appellerons au moment qui vous convient.</p>
+                    <p>Remplissez le formulaire et nous vous appellerons.</p>
 
                     <div class="success-message" id="successMessage">
                         <h4>Merci !</h4>
@@ -633,11 +664,16 @@
                     </div>
 
                     <form id="contactForm" action="https://formspree.io/f/mbdvjzzj" method="POST">
-                        <div class="error-message" id="errorMessage"></div>
 
-                        <div class="form-group">
-                            <label for="nom">Votre nom *</label>
-                            <input type="text" id="nom" name="nom" placeholder="Jean Dupont" required>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="prenom">Prénom *</label>
+                                <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="nom">Nom de famille *</label>
+                                <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -651,7 +687,68 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Meilleur moment pour vous appeler *</label>
+                            <label for="adresse">Adresse complète *</label>
+                            <input type="text" id="adresse" name="adresse" placeholder="123 rue Principale, Montréal, QC" required autocomplete="off">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Type de client *</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="residential" name="type_client" value="Résidentiel">
+                                    <label for="residential">Résidentiel</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="affaires" name="type_client" value="Affaires">
+                                    <label for="affaires">Affaires</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="corporate" name="type_client" value="Corporate">
+                                    <label for="corporate">Corporate</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Services intéressés *</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="internet" name="services" value="Internet">
+                                    <label for="internet">Internet</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="tv" name="services" value="TV">
+                                    <label for="tv">TV</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="cellulaire" name="services" value="Cellulaire">
+                                    <label for="cellulaire">Cellulaire</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="internet5g" name="services" value="Internet Portable 5G">
+                                    <label for="internet5g">Internet 5G</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="telephonie" name="services" value="Téléphonie Fixe">
+                                    <label for="telephonie">Téléphonie Fixe</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="alarme" name="services" value="Alarme">
+                                    <label for="alarme">Alarme</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="degats" name="services" value="Prévention Dégâts d'Eau">
+                                    <label for="degats">Prévention Dégâts</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="paiement" name="services" value="Solutions de Paiement">
+                                    <label for="paiement">Solutions Paiement</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Meilleur moment pour appeler *</label>
                             <div class="radio-group">
                                 <div class="radio-option">
                                     <input type="radio" id="matin" name="disponibilite" value="Matin" checked>
@@ -702,14 +799,92 @@
     </footer>
 
     <script>
+        let autocompleteService;
+        let adresseInput;
+
+        function initGooglePlaces() {
+            adresseInput = document.getElementById('adresse');
+            
+            if (!adresseInput) return;
+
+            autocompleteService = new google.maps.places.AutocompleteService();
+            
+            adresseInput.addEventListener('input', function() {
+                const value = this.value;
+                
+                if (value.length < 3) return;
+
+                autocompleteService.getPlacePredictions({
+                    input: value,
+                    componentRestrictions: { country: 'ca' }
+                }, function(predictions, status) {
+                    if (status === google.maps.places.PlacesServiceStatus.OK && predictions) {
+                        showSuggestions(predictions);
+                    }
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (e.target !== adresseInput) {
+                    const dropdown = document.getElementById('autocompleteDropdown');
+                    if (dropdown) dropdown.remove();
+                }
+            });
+        }
+
+        function showSuggestions(predictions) {
+            let dropdown = document.getElementById('autocompleteDropdown');
+            if (dropdown) dropdown.remove();
+
+            dropdown = document.createElement('div');
+            dropdown.id = 'autocompleteDropdown';
+            dropdown.style.position = 'absolute';
+            dropdown.style.top = '100%';
+            dropdown.style.left = '0';
+            dropdown.style.right = '0';
+            dropdown.style.background = 'rgba(30, 41, 59, 0.95)';
+            dropdown.style.border = '1px solid rgba(59, 130, 246, 0.3)';
+            dropdown.style.borderTop = 'none';
+            dropdown.style.borderRadius = '0 0 0.5rem 0.5rem';
+            dropdown.style.zIndex = '100';
+            dropdown.style.maxHeight = '200px';
+            dropdown.style.overflowY = 'auto';
+
+            predictions.forEach(pred => {
+                const item = document.createElement('div');
+                item.style.padding = '0.75rem';
+                item.style.color = '#cbd5e1';
+                item.style.cursor = 'pointer';
+                item.style.borderBottom = '1px solid rgba(59, 130, 246, 0.2)';
+                item.textContent = pred.description;
+                item.addEventListener('mouseover', function() {
+                    this.style.backgroundColor = 'rgba(59, 130, 246, 0.2)';
+                    this.style.color = 'white';
+                });
+                item.addEventListener('mouseout', function() {
+                    this.style.backgroundColor = 'transparent';
+                    this.style.color = '#cbd5e1';
+                });
+                item.addEventListener('click', function() {
+                    adresseInput.value = pred.description;
+                    dropdown.remove();
+                });
+                dropdown.appendChild(item);
+            });
+
+            adresseInput.parentNode.style.position = 'relative';
+            adresseInput.parentNode.appendChild(dropdown);
+        }
+
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
 
         form.addEventListener('submit', function(e) {
-            // Formspree va gérer l'envoi automatiquement
             submitBtn.textContent = 'Envoi en cours...';
             submitBtn.disabled = true;
         });
+
+        window.addEventListener('load', initGooglePlaces);
     </script>
 </body>
 </html>
