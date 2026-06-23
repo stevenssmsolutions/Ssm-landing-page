@@ -652,7 +652,12 @@
                         <p>Nous vous contacterons sous peu.</p>
                     </div>
 
-                    <form id="contactForm" action="https://formspree.io/f/mbdvjzzj" method="POST">
+                    <form name="contact" method="POST" netlify>
+
+                        <div class="success-message" id="successMessage">
+                            <h4>✅ Merci!</h4>
+                            <p>Nous vous contacterons en moins de 24h ouvrables.</p>
+                        </div>
 
                         <div class="form-row">
                             <div class="form-group">
@@ -865,12 +870,32 @@
             adresseInput.parentNode.appendChild(dropdown);
         }
 
-        const form = document.getElementById('contactForm');
+        const form = document.querySelector('form[name="contact"]');
         const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
 
         form.addEventListener('submit', function(e) {
             submitBtn.textContent = 'Envoi en cours...';
             submitBtn.disabled = true;
+        });
+
+        // Handle Netlify Forms submission
+        form.addEventListener('submit', function(e) {
+            // Let Netlify handle it, but show success after
+            setTimeout(() => {
+                successMessage.classList.add('show');
+                submitBtn.textContent = 'Demander un appel';
+                submitBtn.disabled = false;
+                form.reset();
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+                
+                // Scroll to message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 800);
         });
 
         window.addEventListener('load', initGooglePlaces);
