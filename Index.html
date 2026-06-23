@@ -382,45 +382,6 @@
             color: #cbd5e1;
         }
 
-        .radio-group {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .radio-option {
-            position: relative;
-        }
-
-        .radio-option input[type="radio"] {
-            display: none;
-        }
-
-        .radio-label {
-            display: block;
-            padding: 0.65rem;
-            background-color: rgba(71, 85, 105, 0.3);
-            border: 2px solid #475569;
-            border-radius: 0.5rem;
-            text-align: center;
-            font-weight: 500;
-            color: #cbd5e1;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.85rem;
-        }
-
-        .radio-option input[type="radio"]:checked + .radio-label {
-            border-color: #ff9900;
-            background-color: rgba(255, 153, 0, 0.2);
-            color: white;
-        }
-
-        .radio-label:hover {
-            border-color: rgba(96, 165, 250, 0.5);
-        }
-
         .submit-btn {
             width: 100%;
             padding: 0.9rem;
@@ -535,10 +496,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .radio-group {
-                grid-template-columns: 1fr;
-            }
-
             .checkbox-group {
                 grid-template-columns: 1fr;
             }
@@ -610,6 +567,7 @@
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Cogeco</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Comwave</span></div>
                             <div class="service-item"><svg class="service-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span>Starlink (à venir)</span></div>
+                        </div>
                     </div>
 
                     <div style="height: 2rem;"></div>
@@ -648,17 +606,11 @@
                     <p>Remplissez le formulaire et nous vous appellerons.</p>
 
                     <div class="success-message" id="successMessage">
-                        <h4>Merci !</h4>
-                        <p>Nous vous contacterons sous peu.</p>
+                        <h4>✅ Merci!</h4>
+                        <p>Nous vous contacterons en moins de 24h ouvrables.</p>
                     </div>
 
                     <form name="contact" method="POST" netlify>
-
-                        <div class="success-message" id="successMessage">
-                            <h4>✅ Merci!</h4>
-                            <p>Nous vous contacterons en moins de 24h ouvrables.</p>
-                        </div>
-
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="prenom">Prénom *</label>
@@ -877,23 +829,17 @@
         form.addEventListener('submit', function(e) {
             submitBtn.textContent = 'Envoi en cours...';
             submitBtn.disabled = true;
-        });
-
-        // Handle Netlify Forms submission
-        form.addEventListener('submit', function(e) {
-            // Let Netlify handle it, but show success after
+            
             setTimeout(() => {
                 successMessage.classList.add('show');
                 submitBtn.textContent = 'Demander un appel';
                 submitBtn.disabled = false;
                 form.reset();
                 
-                // Hide message after 5 seconds
                 setTimeout(() => {
                     successMessage.classList.remove('show');
                 }, 5000);
                 
-                // Scroll to message
                 successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }, 800);
         });
